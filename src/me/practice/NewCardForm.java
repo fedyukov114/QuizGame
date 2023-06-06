@@ -40,18 +40,9 @@ public class NewCardForm extends AdditionalWindow {
             }
         });
 
-        JButton deleteCard = new JButton("Удалить карту");
-        deleteCard.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                deleteCard(createdCards, userInputPanel.getText());
-            }
-        });
-
         panelOnNewCard.add(turnBackBtn);
         panelOnNewCard.add(addNewCard);
         panelOnNewCard.add(changeCard);
-        panelOnNewCard.add(deleteCard);
 
         frameOnNewCard.getContentPane().add(BorderLayout.PAGE_START, strOnNewCard);
         frameOnNewCard.getContentPane().add(BorderLayout.CENTER, userInputPanel);

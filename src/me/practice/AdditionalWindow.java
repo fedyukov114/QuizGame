@@ -65,7 +65,6 @@ public abstract class AdditionalWindow {
         }
     }
 
-    //TODO: Зарефакторить метод
     //Изменяем карту
     protected void changeCard(Map<Integer, String> cards, String strFromUser) {
         Integer index = Integer.valueOf((strFromUser.substring(0, strFromUser.indexOf(" "))));
@@ -84,11 +83,12 @@ public abstract class AdditionalWindow {
         //Проверка на существование входящего индекса
         if (cards.containsKey(index)) {
             cards.put(index, topic);
+
             String[] strArray = new String[cards.size()];
             int strArrayIndex = 0;
             Scanner sc = new Scanner(fr);
 
-            //Загоняем строковой массив строками из файла
+            //Заполняем строковой массив строками из файла
             while (sc.hasNextLine()) {
                 strArray[strArrayIndex] = sc.nextLine();
                 strArrayIndex++;
@@ -116,29 +116,6 @@ public abstract class AdditionalWindow {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    //TODO: Надо записывать мапу в файл и проверить работу данноого метода.
-    protected void deleteCard(Map<Integer, String> cards, String strFromUser){
-        Integer index = Integer.valueOf((strFromUser.substring(0, 1)));
-        FileWriter fw = null;
-
-        try {
-            fw = new FileWriter(PATH_FILE,false);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if (cards.containsKey(index)) {
-            cards.remove(index);
-            System.out.println("Нашли и удалили из мапы");
-            //Нужно записывать обновленную хешмапу в файл
-        } else {
-            throw new IllegalArgumentException("No such key in map!");
-        }
-
-
-
     }
 
     protected abstract void createGUI(JFrame mainFrame);
